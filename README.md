@@ -11,7 +11,8 @@ It will have this functionality:
 - online book view;
 - books downloading;
 - session saving;
-... and I will continue and edit tis list step-by-step.
+
+... and I will continue and edit this list step-by-step.
 
 Creating this application I am going to use these technologies and tools:
 JSF, Hibernate, AJAX, Facelets, PrimeFaces, OmniFaces, MySQL and others.

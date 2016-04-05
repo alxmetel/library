@@ -9,15 +9,15 @@ package com.metel.web.beans;
  *
  * @author Metel
  */
-public class Author {
-
+public class Genre {
+    
     private String name;
     private long id;
-    
-    public Author() {
+
+    public Genre() {
     }
 
-    public Author(String name, long id) {
+    public Genre(String name, long id) {
         this.name = name;
         this.id = id;
     }
@@ -25,11 +25,11 @@ public class Author {
     public long getId() {
         return id;
     }
-    
+
     public void setId(long id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }

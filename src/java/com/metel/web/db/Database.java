@@ -24,13 +24,10 @@ public class Database {
     private static DataSource ds;
 
     public static Connection getConnection() {
-
         try {
             ic = new InitialContext();
             ds = (DataSource) ic.lookup("jdbc/Library");
-            if (conn == null) {
-                conn = ds.getConnection();
-            }
+            conn = ds.getConnection();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {
