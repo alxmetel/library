@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.metel.web.beans;
 
 /**
@@ -13,7 +8,7 @@ public class Author {
 
     private String name;
     private long id;
-    
+
     public Author() {
     }
 
@@ -25,11 +20,11 @@ public class Author {
     public long getId() {
         return id;
     }
-    
+
     public void setId(long id) {
         this.id = id;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -37,4 +32,5 @@ public class Author {
     public void setName(String name) {
         this.name = name;
     }
+
 }

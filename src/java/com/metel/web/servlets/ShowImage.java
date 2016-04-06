@@ -1,6 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.metel.web.servlets;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,12 +17,12 @@ import com.metel.web.beans.Book;
  *
  * @author Metel
  */
-@WebServlet(name = "ShowImage", urlPatterns = {"/ShowImage"})
 public class ShowImage extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -33,8 +31,8 @@ public class ShowImage extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("image/jpeg");
-        OutputStream out = response.getOutputStream();
+        response.setContentType("image/jpeg");  
+        OutputStream out = response.getOutputStream();  
         try {
             int index = Integer.valueOf(request.getParameter("index"));
 
@@ -42,6 +40,8 @@ public class ShowImage extends HttpServlet {
             Book book = list.get(index);
             response.setContentLength(book.getImage().length);
             out.write(book.getImage());
+        }catch (Exception ex){
+            ex.printStackTrace();
         } finally {            
             out.close();
         }
@@ -49,7 +49,8 @@ public class ShowImage extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -63,7 +64,8 @@ public class ShowImage extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -85,5 +87,4 @@ public class ShowImage extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

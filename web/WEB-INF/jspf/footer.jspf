@@ -1,6 +1,9 @@
 
 <%@ page pageEncoding="UTF-8" %>
-  </div><!-- end .container -->
+
+
+<div style="clear: both; width:1100px;">&nbsp;</div>
+</div><!-- end .container -->
 
 
 </body>

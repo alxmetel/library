@@ -15,8 +15,8 @@
     </head>
 
     <body>
+        <%session.invalidate();%>
         <div class="main">
-
             <div class="content">
                 <p class="title"><span class="text"><img src="images/lib.png" width="76" height="77" hspace="10" vspace="10" align="middle"></span></p>
                 <p class="title">Онлайн библиотека</p>
@@ -24,7 +24,6 @@
                 <p class="text">Проект находится в разработке, поэтому дизайн и функционал будет постоянно дорабатываться.</p>
                 <p class="text">По всем вопросам обращайтесь по адресу <a href="mailto:support@testlibrary.com">support@testlibrary.com</a></p>
                 <p>&nbsp;</p>
-
             </div>
 
             <div class="login_div">
@@ -33,9 +32,7 @@
                     Имя: <input type="text" name="username" value="" size="20" />
                     <input type="submit" value="Войти" />
                 </form>
-
             </div>
-
             <div class="footer">
                 Разработчик: Александр Метельченко, 2016 г
             </div>

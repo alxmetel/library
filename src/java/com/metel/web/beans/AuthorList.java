@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.metel.web.beans;
 
-import com.metel.web.db.Database;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,44 +7,53 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.metel.web.db.Database;
 
 /**
  *
  * @author Metel
  */
 public class AuthorList {
-    
-    private ArrayList<Author> authorList = new ArrayList<>();
-    
+
+    private ArrayList<Author> authorList = new ArrayList<Author>();
+
     private ArrayList<Author> getAuthors() {
-               
         Statement stmt = null;
         ResultSet rs = null;
         Connection conn = null;
-        
         try {
-        conn = Database.getConnection();
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery("select * from author order by fio");
-        while (rs.next()) {
-            Author author = new Author();
-            author.setName(rs.getString("fio"));
-            authorList.add(author);
-        }
+            conn = Database.getConnection();
+
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("select * from author order by fio");
+            while (rs.next()) {
+                Author author = new Author();
+                author.setId(rs.getLong("id"));
+                author.setName(rs.getString("fio"));
+                authorList.add(author);
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(AuthorList.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                if (stmt!=null) stmt.close();
-                if (rs!=null) rs.close();
-                if (conn!=null) conn.close();
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(AuthorList.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
         return authorList;
     }
-    
+
     public ArrayList<Author> getAuthorList() {
         if (!authorList.isEmpty()) {
             return authorList;

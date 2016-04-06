@@ -1,9 +1,11 @@
+
 <%-- 
     Document   : books
     Created on : Apr 5, 2016, 6:45:16 PM
     Author     : Metel
 --%>
 
+<%@page import="com.metel.web.enums.SearchType"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.metel.web.beans.Book"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,25 +13,36 @@
 
 <%@include file="../WEB-INF/jspf/left_menu.jspf" %>
 
-<%request.setCharacterEncoding("UTF-8");
-
-    long genreId = 0L;
-
-    try {
-        genreId = Long.valueOf(request.getParameter("genre_id"));
-    } catch (Exception ex) {
-        ex.printStackTrace();
-    }
-%>
-
 <jsp:useBean id="bookList" class="com.metel.web.beans.BookList" scope="page"/>
 
-<div class="book_list">
-    <h3>${param.name}</h3>
+<%@include file="../WEB-INF/jspf/letters.jspf" %>
 
-    <%  
-        ArrayList<Book> list = bookList.getBooksByGenre(genreId);
-        session.setAttribute("currentBookList", list);
+<div class="book_list">
+
+    <%
+        ArrayList<Book> list = null;
+
+        if (request.getParameter("genre_id") != null) {
+            long genreId = Long.valueOf(request.getParameter("genre_id"));
+            list = bookList.getBooksByGenre(genreId);
+        } else if (request.getParameter("letter") != null) {
+            String letter = request.getParameter("letter");
+            session.setAttribute("letter", letter);
+            list = bookList.getBooksByLetter(letter);
+        } else if (request.getParameter("search_string") != null) {
+            String searchStr = request.getParameter("search_string");
+            SearchType type = SearchType.TITLE;
+            if (request.getParameter("search_option").equals("Автор")) {
+                type = SearchType.AUTHOR;
+            }
+
+            if (searchStr != null && !searchStr.trim().equals("")) {
+                list = bookList.getBooksBySearch(searchStr, type);
+            }
+        }
+    %>
+    <h5 style="text-align: left; margin-top:20px;">Найдено книг: <%=list.size()%> </h5>
+    <%  session.setAttribute("currentBookList", list);
         for (Book book : list) {
     %>
 
@@ -38,7 +51,7 @@
             <p> <%=book.getName()%></p>
         </div>
         <div class="book_image">
-            <img src="<%=request.getContextPath()%>/ShowImage?index=<%=list.indexOf(book)%>" height="250" width="190" alt="Обложка"/>
+            <a href="#"><img src="<%=request.getContextPath()%>/ShowImage?index=<%=list.indexOf(book)%>" height="250" width="190" alt="Обложка"/></a>
         </div>
         <div class="book_details">
             <br><strong>ISBN:</strong> <%=book.getIsbn()%>

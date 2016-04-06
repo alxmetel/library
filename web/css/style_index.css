@@ -20,7 +20,7 @@ body {
     background-color: #FFF;
     width: 1000px;
     height:550px;
-    margin:0 auto;
+    margin: 0 auto;
     padding:20px;
 }
 .title {
@@ -53,9 +53,9 @@ body {
     height: 50px;
     text-align: center;
     margin:50px;
+    clear: both;
 }
 
 .content{
     height: 300px;
 }
-
