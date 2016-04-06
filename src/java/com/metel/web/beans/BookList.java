@@ -43,9 +43,9 @@ public class BookList {
                 book.setIsbn(rs.getString("isbn"));
                 book.setAuthor(rs.getString("author"));
                 book.setPageCount(rs.getInt("page_count"));
-                book.setPublishDate(rs.getDate("publish_year"));
+                book.setPublishDate(rs.getInt("publish_year"));
                 book.setPublisher(rs.getString("publisher"));
-                book.setImage(new ImageIcon(rs.getBytes("image")).getImage());
+                book.setImage(rs.getBytes("image"));
                 bookList.add(book);
             }
 
@@ -66,7 +66,6 @@ public class BookList {
                 Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println(bookList);
         return bookList;
     }
 

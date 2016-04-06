@@ -42,8 +42,8 @@ public class AuthorList {
         } finally {
             try {
                 if (stmt!=null) stmt.close();
-                if (rs!=null)rs.close();
-                if (conn!=null)conn.close();
+                if (rs!=null) rs.close();
+                if (conn!=null) conn.close();
             } catch (SQLException ex) {
                 Logger.getLogger(AuthorList.class.getName()).log(Level.SEVERE, null, ex);
             }
