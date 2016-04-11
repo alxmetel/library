@@ -162,17 +162,18 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     margin: 0;
 }
 
-.book_title p{
+.book_title{
+    height: 50px;
+    float:left;
+}
+
+.book_title a{
     color:#378de5 ;
     font-weight: bold; 
     font-size: 15px; 
     padding: 0;
     margin: 0;
-}
-
-.book_title{
-    height: 50px;
-    float:left;
+    text-decoration: none;
 }
 
 .book_info{
@@ -203,4 +204,11 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     text-decoration: none;
     font-size: 15px;
     font-weight: bold;
+}
+
+.pdf_viewer{
+    margin: 0 auto;
+    width:850px;
+    margin-top:30px;
+    height: 1200px;
 }
